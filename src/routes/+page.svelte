@@ -3,10 +3,8 @@
   import Experience from "../lib/experience/experience";
 
   let canvas: HTMLCanvasElement;
-  let experience: Experience;
   onMount(() => {
-    experience = new Experience(canvas);
-    console.log(experience.camera);
+    new Experience(canvas);
   });
 </script>
 

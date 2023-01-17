@@ -13,7 +13,8 @@ export default class Resources extends EventEmitter {
   items: { [key: string]: GLTF };
   queue: number;
   loaded: number;
-  loaders: { gltfLoader: GLTFLoader; dracoLoader: DRACOLoader };
+  gltfLoader: GLTFLoader;
+  dracoLoader: DRACOLoader;
   scene: Scene;
   constructor(canvas: HTMLCanvasElement, assets: Asset[]) {
     super();
@@ -32,16 +33,16 @@ export default class Resources extends EventEmitter {
   }
   startLoading() {
     for (const asset of this.assets) {
-      this.loaders.gltfLoader.load(asset.path, (file) => {
+      this.gltfLoader.load(asset.path, (file) => {
         this.singleAssetLoaded(asset, file);
       });
     }
   }
   setLoaders() {
-    this.loaders.gltfLoader = new GLTFLoader();
-    this.loaders.dracoLoader = new DRACOLoader();
-    this.loaders.dracoLoader.setDecoderPath("/draco/");
-    this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
+    this.gltfLoader = new GLTFLoader();
+    this.dracoLoader = new DRACOLoader();
+    this.dracoLoader.setDecoderPath("/draco/");
+    this.gltfLoader.setDRACOLoader(this.dracoLoader);
   }
 
   singleAssetLoaded(asset: Asset, file: GLTF) {

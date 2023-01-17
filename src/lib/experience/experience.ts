@@ -3,8 +3,10 @@ import Sizes from "./sizes";
 import Camera from "./camera";
 import Renderer from "./renderer";
 import Resources from "./resources";
+import World from "./world";
 
 import { assets } from "./assets";
+import Model from "./model";
 
 export default class Experience {
   static instance: Experience;
@@ -14,6 +16,8 @@ export default class Experience {
   camera: Camera;
   renderer: Renderer;
   resources: Resources;
+  world: World;
+  model: Model;
 
   constructor(canvas: HTMLCanvasElement) {
     if (Experience.instance) {
@@ -26,5 +30,13 @@ export default class Experience {
     this.camera = new Camera(this.canvas);
     this.renderer = new Renderer(this.canvas);
     this.resources = new Resources(this.canvas, assets);
+
+    this.model = new Model(this.canvas);
+    this.world = new World(this.canvas);
+
+    this.camera.perspectiveCamera.position.set(0, 0, 0);
+    this.resources.on("ready", () => {
+      this.renderer.update();
+    });
   }
 }
