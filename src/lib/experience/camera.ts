@@ -11,7 +11,7 @@ export default class Camera {
   perspectiveCamera: THREE.PerspectiveCamera;
   orthographicCamera: THREE.OrthographicCamera;
   frustrum: number;
-  controls: any;
+  controls: OrbitControls;
   camera: Camera;
   renderer: import("/workspace/Sveltekit-Threejs-LittlestTokyo/src/lib/experience/renderer").default;
 
@@ -26,19 +26,11 @@ export default class Camera {
     this.createOrthographicCamera();
     this.setOrbitControls();
   }
-  // createOrbitControls() {
-  //   this.controls = new OrbitControls(
-  //     this.camera.perspectiveCamera,
-  //     this.canvas
-  //   );
 
-  //   this.scene.add(this.controls);
-  // }
-
-  setOrbitControls() {
+  public setOrbitControls() {
     this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
     this.controls.enableDamping = true;
-    this.controls.enableZoom = true;
+    this.controls.dampingFactor = 0.1;
   }
 
   private createPerspectiveCamera() {
@@ -49,13 +41,8 @@ export default class Camera {
       10000
     );
 
+    this.perspectiveCamera.position.set(10, 10, 10);
     this.scene.add(this.perspectiveCamera);
-
-    this.perspectiveCamera.position.x = 29;
-    this.perspectiveCamera.position.y = 14;
-    this.perspectiveCamera.position.z = 12;
-
-    this.perspectiveCamera.position.z = 10;
   }
 
   private createOrthographicCamera() {

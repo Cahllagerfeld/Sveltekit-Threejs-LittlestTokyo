@@ -34,7 +34,6 @@ export default class Experience {
     this.model = new Model(this.canvas);
     this.world = new World(this.canvas);
 
-    this.camera.perspectiveCamera.position.set(0, 0, 0);
     this.resources.on("ready", () => {
       this.renderer.update();
     });

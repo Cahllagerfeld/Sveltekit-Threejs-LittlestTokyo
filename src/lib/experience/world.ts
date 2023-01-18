@@ -24,9 +24,6 @@ export default class World {
     this.sunLight.position.set(-1.5, 7, 3);
     this.scene.add(this.sunLight);
 
-    const lightHelper = new THREE.DirectionalLightHelper(this.sunLight, 1);
-    this.scene.add(lightHelper);
-
     this.ambientLight = new THREE.AmbientLight("#ffffff", 1);
     this.scene.add(this.ambientLight);
   }
