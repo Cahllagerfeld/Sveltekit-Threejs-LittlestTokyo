@@ -6,6 +6,7 @@ specifiers:
   '@types/three': ^0.148.0
   events: ^3.3.0
   prettier: ^2.8.4
+  prettier-plugin-svelte: ^2.9.0
   svelte: ^3.54.0
   svelte-check: ^3.0.1
   three: ^0.148.0
@@ -22,6 +23,7 @@ devDependencies:
   '@types/three': 0.148.0
   events: 3.3.0
   prettier: 2.8.4
+  prettier-plugin-svelte: 2.9.0_jrsxveqmsx2uadbqiuq74wlc4u
   svelte: 3.55.1
   svelte-check: 3.0.2_svelte@3.55.1
   tslib: 2.4.1
@@ -739,6 +741,16 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: true
+
+  /prettier-plugin-svelte/2.9.0_jrsxveqmsx2uadbqiuq74wlc4u:
+    resolution: {integrity: sha512-3doBi5NO4IVgaNPtwewvrgPpqAcvNv0NwJNflr76PIGgi9nf1oguQV1Hpdm9TI2ALIQVn/9iIwLpBO5UcD2Jiw==}
+    peerDependencies:
+      prettier: ^1.16.4 || ^2.0.0
+      svelte: ^3.2.0
+    dependencies:
+      prettier: 2.8.4
+      svelte: 3.55.1
     dev: true
 
   /prettier/2.8.4:
